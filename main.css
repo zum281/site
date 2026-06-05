@@ -23,11 +23,29 @@ p {
   color: var(--accent);
 }
 
-footer > a {
+a {
   color: var(--accent);
   transition: all 0.3s ease-in-out;
 
   &:hover {
     color: var(--accent-hover);
+  }
+}
+
+section {
+  margin-block: 1rem;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  gap: 0.5rem;
+
+  h2 {
+    font-weight: 600;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 }
