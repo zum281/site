@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v1";
+const CACHE_VERSION = "v2";
 
 const addResourcesToCache = async (resources) => {
   const cache = await caches.open(CACHE_VERSION);
@@ -46,6 +46,10 @@ self.addEventListener("install", (event) => {
     addResourcesToCache([
       "/",
       "/index.html",
+      "/assets/fonts/IosevkaTermSlabNerdFontPropo-Regular.ttf",
+      "/assets/fonts/IosevkaTermSlabNerdFontPropo-Medium.ttf",
+      "/assets/fonts/IosevkaTermSlabNerdFontPropo-Bold.ttf",
+      "/font.css",
       "/main.css",
       "/resets.css",
       "/theme.css",
