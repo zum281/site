@@ -1,5 +1,16 @@
 const CACHE_VERSION = "v2";
 
+const deleteCache = async (key) => {
+  await caches.delete(key);
+};
+
+const deleteOldCaches = async () => {
+  const cacheKeepList = [CACHE_VERSION];
+  const keyList = await caches.keys();
+  const cachesToDelete = keyList.filter((key) => !cacheKeepList.includes(key));
+  await Promise.all(cachesToDelete.map(deleteCache));
+};
+
 const addResourcesToCache = async (resources) => {
   const cache = await caches.open(CACHE_VERSION);
   await cache.addAll(resources);
@@ -62,6 +73,7 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
       await enableNavigationPreload();
+      await deleteOldCaches();
       await self.clients.claim();
     })(),
   );
