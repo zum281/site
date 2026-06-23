@@ -55,7 +55,12 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("activate", (event) => {
-  event.waitUntil(enableNavigationPreload());
+  event.waitUntil(
+    (async () => {
+      await enableNavigationPreload();
+      await self.clients.claim();
+    })(),
+  );
 });
 
 self.addEventListener("fetch", (event) => {
