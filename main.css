@@ -18,6 +18,10 @@ main {
   flex: 1;
 }
 
+h1 {
+  text-align: center;
+}
+
 p {
   text-align: center;
   color: var(--accent);
